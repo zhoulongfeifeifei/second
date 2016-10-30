@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>标题</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<style>
+	*{margin:0;padding:0;list-style:none;}
+	ul{width:300px;height:300px;margin:50px auto;overflow:hidden;position: relative;}
+	li{width:100px;height:100px;float:left;background:#600000;}
+	div{position:absolute;background: #f00;}
+	.aa{background:#ccc}
+	.bb{background:#eee;}
+</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class="aa"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+
+<!-- JiaThis Button BEGIN -->
+<!-- <div class="jiathis_style_24x24">
+
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div> -->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+</body>
+<script type="text/javascript" src="jq.js"></script>
+<script>
+$(function(){
+var speedArr=[100,100,-100,-100];
+var dirArr=['left','top','left','top'];
+var istart=0;
+var inowVaule=0;
+
+var target=[200,200,0,0];
+$('<div>').css({
+	width:'100px',
+	height:'100px',
+	left:0,
+	top:0
+}).appendTo($('ul'));
+var tarIndex=0;
+// console.log($('div').position()[dirArr[istart]])
+var timer=setInterval(function(){
+	if(tarIndex==14){
+		clearInterval(timer);
+		return;
+	}
+	tarIndex++;
+	inowVaule=$('div').position()[dirArr[istart]]+speedArr[istart];
+	$('div').css(
+		dirArr[istart],inowVaule+'px'
+	);
+	if(Math.abs(inowVaule-target[istart])<=1){
+
+		if(istart>=3){
+			istart=0;
+		}else{
+
+			istart++;
+		}
+	}
+
+},100)
+
+
+	/*
+	var timer=null;
+	var lis=$('li');
+	var speed=0;
+	var arr1=getarr();
+	var index=0;
+	var n=Math.floor(Math.random()*8);
+
+$('.aa').click(function(){
+	move()
+	function move(){
+		timer=setTimeout(function(){
+			speed+=50;
+			arr1.removeClass('bb');
+			arr1.eq(index).addClass('bb');
+			index++;
+
+			if (speed>500) {
+				speed=500;
+			};
+			if (index>7) {
+				index=0;
+			};
+
+			if (index==n) {
+				if (speed>=500) {
+					alert('恭喜您中了：'+n+'等奖');
+						clearTimeout(timer);
+					}else{
+						move();
+					};
+				}else{
+					move();
+				};
+
+
+		},speed)
+	}
+})
+
+
+
+	function getarr(){
+		var arr=[];
+		arr[0]=lis[0];
+		arr[1]=lis[1];
+		arr[2]=lis[2];
+		arr[3]=lis[5];
+		arr[4]=lis[8];
+		arr[5]=lis[7];
+		arr[6]=lis[6];
+		arr[7]=lis[3];
+		return $(arr);
+	}
+*/
+
+})
+</script>
+</html>
